@@ -1,0 +1,795 @@
+/* app.css - VERSI STABIL & TERVERIFIKASI */
+:root {
+    --primary-bg: #0A192F;
+    --border-color: #1d335a;
+    --text-bright: #E6F1FF;
+    --text-primary: #CCD6F6;
+    --text-secondary: #a8b2d1;
+    --accent-gold-bright: #FFD700;
+    --accent-gold-darker: #b58d0d;
+    --accent-gold-hover: #ffd900d7;
+    --sidebar-light-bg: #FFFFFF;
+    --sidebar-light-border: #eef2f9;
+    --sidebar-light-text-brand: #1e293b;
+    --sidebar-light-text-primary: #334155;
+    --sidebar-light-text-secondary: #64748b;
+    --sidebar-indicator-color: #b58d0d;
+    --sidebar-hover-bg: #f8fafc;
+    --font-branding: 'Alata', sans-serif;
+    --font-ui: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+}
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+.app-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+.app-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar-light-bg);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--sidebar-light-border);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: width var(--transition-speed) ease, left var(--transition-speed) ease-in-out;
+}
+.branding-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--sidebar-light-border);
+    margin-bottom: 1rem;
+}
+.brand-name {
+    font-family: var(--font-branding);
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--sidebar-light-text-brand);
+}
+.brand-dot {
+    color: var(--sidebar-indicator-color);
+}
+.navigation {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--sidebar-light-text-secondary);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    border-left: 4px solid transparent;
+}
+.nav-link:hover {
+    background-color: var(--sidebar-hover-bg);
+    color: var(--sidebar-light-text-primary);
+}
+.nav-link.active {
+    background-color: var(--sidebar-hover-bg);
+    color: var(--sidebar-light-text-primary);
+    font-weight: 600;
+    border-left: 4px solid var(--sidebar-indicator-color);
+}
+.workspace {
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+}
+.workspace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+.greeting {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-bright);
+}
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.user-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-gold-bright);
+    color: var(--primary-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    transition: background-color var(--transition-speed) ease;
+}
+.user-avatar:hover {
+    background-color: var(--accent-gold-hover);
+    cursor: pointer;
+}
+.content-area {
+    flex-grow: 1;
+}
+.welcome-message {
+    text-align: center;
+    margin-top: 10vh;
+}
+.welcome-message h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-bright);
+}
+.welcome-message p {
+    color: var(--text-primary);
+}
+.menu-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--text-bright);
+}
+.menu-toggle-btn svg {
+    width: 28px;
+    height: 28px;
+}
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.2);
+    }
+    .sidebar.open {
+        left: 0;
+    }
+    .workspace {
+        padding: 1.5rem;
+        width: 100%;
+    }
+    .workspace-header {
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+    .menu-toggle-btn {
+        display: block;
+    }
+    .greeting {
+        font-size: 1.2rem;
+        flex-grow: 1;
+    }
+    .user-name {
+        display: none;
+    }
+}
+/* ==================================================== */
+/* ---      STYLE UNTUK "PINTU GERBANG VISUAL"      --- */
+/* ==================================================== */
+.tool-grid-container {
+    padding: 1rem 0;
+}
+
+.grid-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 2rem;
+}
+
+.tool-grid {
+    display: grid;
+    /* Ini adalah magic untuk grid responsif */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.tool-card {
+    display: block;
+    text-decoration: none;
+    background-color: var(--sidebar-bg); /* #112240 */
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 12px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold-darker);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.tool-card-icon {
+    margin-bottom: 1.5rem;
+}
+
+.tool-card-icon img {
+    width: 40px;
+    height: 40px;
+    stroke: var(--accent-gold-bright); /* Ini tidak akan berfungsi untuk img, tapi bagus untuk inline svg */
+    filter: invert(79%) sepia(55%) saturate(468%) hue-rotate(359deg) brightness(96%) contrast(90%); /* Trik untuk mewarnai IMG SVG menjadi gold */
+}
+
+.tool-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+}
+
+.tool-card-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}/* ==================================================== */
+/* ---      STYLE UNTUK PROFILE DROPDOWN & MODAL    --- */
+/* ==================================================== */
+
+/* --- Profile Wrapper & Dropdown --- */
+.profile-wrapper {
+    position: relative; /* Kunci untuk posisi dropdown */
+}
+
+.user-profile {
+    cursor: pointer; /* Ubah kursor menjadi tangan saat hover */
+    border-radius: 20px;
+    transition: background-color var(--transition-speed) ease;
+    padding: 4px;
+}
+
+.user-profile:hover {
+    background-color: var(--border-color);
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 120%; /* Posisi sedikit di bawah avatar */
+    right: 0;
+    width: 220px;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+    z-index: 1001;
+    overflow: hidden;
+    
+    /* Awalnya tersembunyi, dengan animasi */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+.profile-dropdown.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.dropdown-item:hover {
+    background-color: var(--border-color);
+    color: var(--text-bright);
+}
+
+.dropdown-separator {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0.5rem 0;
+}
+
+/* --- Modal Pop-up --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 215, 0, 0.2); /* Warna Gold (#FFD700) dengan transparansi 20% */
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Awalnya tersembunyi, dengan animasi */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--sidebar-bg); /* Warna sama dengan sidebar gelap */
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 50px -15px rgba(0,0,0,0.5);
+    position: relative; /* Untuk posisi tombol close */
+
+    /* Animasi saat muncul */
+    transform: scale(0.95);
+    transition: transform var(--transition-speed) ease;
+}
+
+.modal-overlay.open .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-content h3 {
+    font-size: 1.5rem;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* --- Form di dalam Modal --- */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-bright);
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent-gold-darker);
+    box-shadow: 0 0 0 3px rgba(209, 175, 55, 0.2);
+}
+
+.modal-action-btn {
+    width: 100%;
+    background-color: var(--accent-gold-bright);
+    color: var(--primary-bg);
+    border: none;
+    padding: 0.9rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.modal-action-btn:hover {
+    background-color: var(--accent-gold-hover);
+}/* ==================================================== */
+/* ---      STYLE UNTUK HALAMAN GENERATOR           --- */
+/* ==================================================== */
+
+/* --- Styling untuk Navigasi Tab Internal --- */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.tab-link {
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+.tab-link:hover {
+    color: var(--text-bright);
+}
+
+.tab-link.active {
+    color: var(--accent-gold-bright);
+    border-bottom-color: var(--accent-gold-bright);
+    font-weight: 600;
+}
+
+/* --- Wrapper & Konten Tab --- */
+.tab-content-wrapper {
+    padding-top: 1rem;
+}
+
+.tab-content {
+    display: none; /* Sembunyikan semua konten tab secara default */
+}
+
+.tab-content.active {
+    display: block; /* Tampilkan hanya yang aktif */
+}
+
+/* --- Grid untuk Sub-Alat --- */
+.sub-tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Desain Kartu Terang --- */
+.sub-tool-card {
+    background-color: var(--sidebar-light-bg); /* Warna PUTIH */
+    border: 1px solid var(--sidebar-light-border);
+    padding: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.sub-tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(17, 34, 64, 0.1);
+}
+
+.sub-tool-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--sidebar-light-text-brand); /* Warna Teks Gelap */
+    margin-bottom: 0.5rem;
+}
+
+.sub-tool-description {
+    font-size: 0.9rem;
+    color: var(--sidebar-light-text-secondary); /* Warna Teks Abu-abu */
+    line-height: 1.5;
+}
+/* ==================================================== */
+/* ---      STYLE UNTUK HALAMAN GENERATOR (DESAIN BARU) --- */
+/* ==================================================== */
+
+/* Penataan Header Halaman Khusus */
+.page-title-wrapper { flex-grow: 1; text-align: center; padding: 0 2rem; }
+.page-title { font-family: var(--font-branding); font-size: 2rem; color: var(--text-bright); }
+.page-subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+/* Penataan Area Kerja Generator (Layout 2 Kolom) */
+.generator-workspace { display: grid; grid-template-columns: 400px 1fr; gap: 2rem; flex-grow: 1; min-height: 0; }
+
+/* 
+====================================================
+===      DESAIN BARU BERBASIS BLOK/CARD          ===
+====================================================
+*/
+.generator-controls, .generator-output {
+    background-color: transparent; /* Wrapper utama sekarang transparan */
+    padding: 0; /* Hapus padding dari wrapper */
+    border: none; /* Hapus border dari wrapper */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Ini akan memberi JARAK antar blok form */
+}
+
+.generator-output {
+    background-color: var(--sidebar-bg); /* Beri background hanya pada kolom output */
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+/* Setiap blok form (sebagai kartu) */
+/* ==================================================== */
+/* ---      STYLE UNTUK HALAMAN GENERATOR (REVISI ALIGNMENT) --- */
+/* ==================================================== */
+
+/* Penataan Header Halaman Khusus */
+.page-title-wrapper { flex-grow: 1; text-align: center; padding: 0 2rem; }
+.page-title { font-family: var(--font-branding); font-size: 2rem; color: var(--text-bright); }
+.page-subtitle { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.25rem; }
+
+/* Penataan Area Kerja Generator (Layout 2 Kolom) */
+.generator-workspace { display: grid; grid-template-columns: 400px 1fr; gap: 2rem; flex-grow: 1; min-height: 0; }
+
+/* Desain Berbasis Blok/Card */
+.generator-controls, .generator-output {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.generator-output {
+    background-color: var(--sidebar-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+/* 
+====================================================
+===      INI BAGIAN PERBAIKAN UTAMA              ===
+====================================================
+*/
+
+/* Setiap blok form (sebagai kartu) */
+.control-block {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    /* Padding di sini yang akan mengatur jarak "bingkai" */
+    padding: 1rem; 
+}
+
+.control-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    padding: 0 0.25rem; /* Beri sedikit padding pada label agar tidak mepet */
+}
+
+/* Style untuk Input & Select di dalam blok */
+.control-textarea, .control-select {
+    width: 100%; /* Pastikan elemen mengambil lebar penuh */
+    box-sizing: border-box; /* Ini penting agar padding & border tidak menambah lebar */
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-bright);
+    padding: 0.8rem 1rem; /* Padding internal untuk teks di dalam input */
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.control-textarea:focus, .control-select:focus {
+    outline: none;
+    border-color: var(--accent-gold-darker);
+    box-shadow: 0 0 0 3px rgba(209, 175, 55, 0.2);
+}
+.control-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+select.control-select {
+    -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%238892b0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1em;
+}
+
+/* Tombol Generate */
+.generate-btn {
+    background-color: var(--accent-gold-bright);
+    color: var(--primary-bg);
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color var(--transition-speed) ease;
+}
+.generate-btn:hover { background-color: var(--accent-gold-hover); }
+
+/* Placeholder di Area Output */
+.output-placeholder { display: flex; justify-content: center; align-items: center; height: 100%; color: var(--text-secondary); text-align: center; flex-direction: column; gap: 0.5rem; font-size: 1.2rem; }
+
+/* --- Aturan Responsif --- */
+@media (max-width: 992px) {
+    .page-title-wrapper { text-align: left; padding: 0; }
+    .page-title { font-size: 1.5rem; }
+    .generator-workspace { grid-template-columns: 1fr; }
+    .generator-controls, .generator-output { padding: 0; }
+    .control-block {
+        /* Di mobile, kurangi padding bingkai agar lebih lega */
+        padding: 0.75rem;
+    }
+    .generator-output { min-height: 300px; padding: 1.5rem; }
+}/* ==================================================== */
+/* ---      STYLE UNTUK AREA OUTPUT GENERATOR       --- */
+/* ==================================================== */
+
+.output-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem; /* Jarak antar bagian output */
+}
+
+/* Tombol Aksi di Atas */
+.output-actions {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.action-btn {
+    background-color: var(--border-color);
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+.action-btn:hover {
+    background-color: var(--primary-bg);
+    color: var(--text-bright);
+    border-color: var(--border-color);
+}
+
+/* Setiap bagian output (Judul, Deskripsi, dll) */
+.output-section {
+    /* tidak perlu style khusus, diatur oleh wrapper */
+}
+
+.output-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.output-content {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    min-height: 40px; /* Tinggi minimal agar tidak terlalu tipis saat kosong */
+}
+.output-content:focus {
+    outline: none;
+    border-color: var(--accent-gold-darker);
+    box-shadow: 0 0 0 3px rgba(209, 175, 55, 0.2);
+}
+
+/* Grid untuk Hashtag & Tags */
+.output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Khusus untuk Narasi */
+#output-narasi .segment {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+#output-narasi .segment:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.segment-title {
+    font-weight: 700;
+    color: var(--accent-gold-bright);
+    margin-bottom: 0.5rem;
+}
+.segment-narasi {
+    color: var(--text-bright);
+    margin-bottom: 0.75rem;
+}
+.segment-prompt {
+    background-color: rgba(0,0,0,0.2);
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+/* ==================================================== */
+/* ---      STYLE UNTUK LOADING SPINNER             --- */
+/* ==================================================== */
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--border-color);
+    border-bottom-color: var(--accent-gold-bright);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

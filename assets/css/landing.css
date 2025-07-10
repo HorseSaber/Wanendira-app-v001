@@ -1,0 +1,204 @@
+/* landing.css - Style untuk Halaman Depan Wanendira. (VERSI FINAL REVISI) */
+
+/* --- Variabel Global (Branding & Font KITA) --- */
+:root {
+    --primary-bg: #0A192F;      /* Biru Navy Gelap Intens */
+    --accent-gold-bright: #FFD700; /* Kuning Gold TERANG (untuk Aksen Utama) */
+    --accent-gold-cta: #D1AF37;   /* Kuning Gold (untuk Tombol Hover) */
+    --text-primary: #CCD6F6;    /* Putih pudar */
+    --text-secondary: #8892B0;      /* Abu-abu Kebiruan */
+    --white: #FFFFFF;
+    --light-bg: #F8F9FA;        /* Background terang untuk section */
+    --dark-text: #112240;       /* Teks gelap untuk background terang */
+    --font-branding: 'Alata', sans-serif;
+    --font-ui: 'Poppins', sans-serif;
+}
+
+/* --- Gaya Dasar --- */
+body {
+    font-family: var(--font-ui);
+    background-color: var(--white);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Header & Navigasi --- */
+.main-header {
+    background-color: var(--primary-bg);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-branding);
+    font-size: 1.8rem;
+    font-weight: 400;
+    /* PERUBAHAN 1: Warna logo Wanendira menjadi Gold Terang */
+    color: var(--accent-gold-bright); 
+}
+
+.logo-dot {
+    /* PERUBAHAN 2: Warna titik menjadi putih, ukuran lebih besar */
+    color: var(--white);
+    font-size: 2.2rem; /* Lebih besar dari font logo */
+    line-height: 0; /* Menjaga posisi vertikal */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-gold-bright);
+    border-bottom-color: var(--accent-gold-bright);
+}
+
+/* --- Tombol Call-to-Action (CTA) --- */
+.cta-button {
+    padding: 0.6rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 700; /* Membuat tulisan tombol lebih bold */
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-cta {
+    /* PERUBAHAN 3: Tombol Masuk kini menggunakan Gold Terang */
+    background-color: var(--accent-gold-bright);
+    border: 1px solid var(--accent-gold-bright);
+    color: var(--primary-bg);
+}
+
+.nav-cta:hover {
+    background-color: transparent;
+    color: var(--accent-gold-bright);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background-color: var(--primary-bg);
+    color: var(--white);
+    text-align: center;
+    padding: 6rem 2rem 7rem;
+}
+
+.hero-title {
+    font-family: var(--font-branding);
+    font-size: 3.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.hero-slogan {
+    font-size: 1.5rem;
+    color: var(--accent-gold-bright);
+    margin-bottom: 2.5rem;
+    font-family: var(--font-ui);
+}
+
+.hero-cta {
+    background-color: var(--accent-gold-bright);
+    color: var(--primary-bg);
+    font-size: 1.1rem;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* --- Features Section (Grid Kartu) --- */
+.features-section {
+    padding: 5rem 5%;
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.section-title {
+    font-family: var(--font-branding);
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+    color: var(--dark-text);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: left;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 30px rgba(17, 34, 64, 0.1);
+}
+
+.feature-card h3 {
+    color: var(--primary-bg);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    color: #555;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--primary-bg);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem;
+}
+
+/* --- Media Query untuk Tampilan Mobile --- */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-slogan {
+        font-size: 1.2rem;
+    }
+}

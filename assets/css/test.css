@@ -1,0 +1,10 @@
+/* test.css - File untuk debugging */
+
+body {
+    /* Kita beri warna yang sangat mencolok untuk memastikan file ini terbaca */
+    background-color: red !important;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 50px;
+}
