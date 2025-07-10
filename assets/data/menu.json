@@ -1,0 +1,46 @@
+{
+  "menuItems": [
+    {
+      "id": "home",
+      "name": "Beranda",
+      "icon": "icon-home.svg",
+      "link": "app.html"
+    },
+    {
+      "id": "youtube-generator",
+      "name": "Generator Konten YouTube",
+      "icon": "icon-youtube.svg",
+      "link": "pages/generator-youtube.html"
+    },
+    {
+      "id": "image-generator",
+      "name": "Generator Teks ke Gambar",
+      "icon": "icon-image.svg",
+      "link": "pages/generator-gambar.html"
+    },
+    {
+      "id": "prompt-generator",
+      "name": "Generator Prompt Visual",
+      "icon": "icon-prompt.svg",
+      "link": "pages/generator-prompt.html"
+    },
+    {
+      "id": "video-prompt-generator",
+      "name": "Generator Aksi Video",
+      "icon": "icon-video.svg",
+      "link": "pages/generator-video.html"
+    },
+    {
+      "id": "explore",
+      "name": "Ruang Eksplorasi",
+      "icon": "icon-explore.svg",
+      "link": "pages/explore.html"
+    },
+    {
+      "id": "blog",
+      "name": "Blog",
+      "icon": "icon-blog.svg",
+      "link": "pages/blog.html"
+    }
+  ]
+}
