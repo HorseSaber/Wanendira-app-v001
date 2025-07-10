@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Gambar AI | Wanendira.</title>
+    
+    <!-- Path ke CSS sudah disesuaikan (naik satu level ke root) -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+    <div id="app-overlay" class="app-overlay"></div>
+    <div class="app-container">
+        <!-- Sidebar akan di-load oleh ui-loader.js -->
+        <aside id="sidebar" class="sidebar">
+            <div class="branding-header"><h1 class="brand-name">Wanendira<span class="brand-dot">.</span></h1></div>
+            <nav id="main-nav" class="navigation"></nav>
+        </aside>
+
+        <!-- Workspace Utama -->
+        <main class="workspace">
+            <!-- Header yang konsisten dengan halaman lain -->
+            <header class="workspace-header">
+                <button id="menu-toggle" class="menu-toggle-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+                <div class="page-title-wrapper">
+                    <h2 class="page-title">GENERATOR GAMBAR AI</h2>
+                    <p class="page-subtitle">Ubah imajinasimu menjadi gambar visual yang memukau.</p>
+                </div>
+                <div class="profile-wrapper">
+                    <div id="user-profile-toggle" class="user-profile"><span class="user-name">Guest</span><div class="user-avatar">G</div></div>
+                    <div id="profile-dropdown" class="profile-dropdown"><div class="dropdown-item" id="manage-api-key"><span>🔑</span> Kelola API Key</div><div class="dropdown-item"><span>⚙️</span> Pengaturan</div><div class="dropdown-separator"></div><div class="dropdown-item"><span>🚪</span> Keluar</div></div>
+                </div>
+            </header>
+
+            <!-- 
+                Area konten utama dengan layout 2 kolom (generator-workspace)
+                Tapi isinya masih kosong. Ini yang akan kita bangun di langkah selanjutnya.
+            -->
+            <div id="content-area" class="generator-workspace">
+                
+           <!-- Area Kontrol (Kiri) - Sudah Terisi -->
+<div class="generator-controls" id="image-generator-controls">
+
+    <!-- Blok 1: Prompt Utama -->
+    <div class="control-block">
+        <label for="prompt-input" class="control-label">Prompt Utama</label>
+        <textarea id="prompt-input" class="control-textarea" rows="5" placeholder="Deskripsikan gambar yang kamu inginkan. Gunakan bahasa Inggris untuk hasil terbaik. Contoh: a majestic lion king on a cliff, cinematic, golden hour"></textarea>
+    </div>
+
+    <!-- Blok 2: Negative Prompt -->
+    <div class="control-block">
+        <label for="negative-prompt-input" class="control-label">Negative Prompt</label>
+        <textarea id="negative-prompt-input" class="control-textarea" rows="3" placeholder="Hal-hal yang TIDAK kamu inginkan di gambar. Contoh: ugly, blurry, bad anatomy, watermark, text"></textarea>
+    </div>
+
+    <!-- Blok 3: Pengaturan Gambar -->
+    <div class="control-block">
+        <label class="control-label">Pengaturan Gambar</label>
+        
+        <!-- Sub-blok untuk Rasio Aspek -->
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="aspect-ratio-select" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; display: block;">Rasio Aspek</label>
+            <select id="aspect-ratio-select" class="control-select">
+                <option value="1:1" selected>1:1 (Persegi)</option>
+                <option value="16:9">16:9 (Landscape)</option>
+                <option value="9:16">9:16 (Potrait)</option>
+            </select>
+        </div>
+
+        <!-- Sub-blok untuk Jumlah Gambar -->
+        <div class="form-group">
+            <label for="num-images-select" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; display: block;">Jumlah Gambar</label>
+            <select id="num-images-select" class="control-select">
+                <option value="1">1 Gambar</option>
+                <option value="2">2 Gambar</option>
+                <option value="4" selected>4 Gambar (Disarankan)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Tombol Generate Utama -->
+    <button class="generate-btn" id="generate-image-btn">
+        <span>🎨</span> Generate Gambar
+    </button>
+</div>
+
+<!-- Area Hasil (Kanan) - Sudah Disiapkan -->
+<div class="generator-output" id="image-generator-output">
+
+    <!-- 
+        Wadah untuk menampilkan gambar-gambar yang sedang/sudah digenerate.
+        Kita akan menggunakan grid CSS untuk menatanya secara otomatis.
+    -->
+    <div class="image-result-grid" id="image-result-grid">
+        
+        <!-- 
+            Ini adalah placeholder awal. Pesan ini akan menghilang
+            saat pengguna menekan tombol "Generate".
+        -->
+        <div class="output-placeholder" id="output-placeholder-image">
+            <p style="font-size: 1.2rem;">🎨</p>
+            <p>Gambar yang kamu generate akan muncul di sini.</p>
+        </div>
+        
+    </div>
+
+    <!-- 
+        Area untuk menampilkan galeri histori sesi.
+        Untuk saat ini kita beri judul saja dulu.
+    -->
+    <div class="history-gallery-wrapper">
+        <h4 class="history-title">Histori Sesi Ini</h4>
+        <div class="history-grid" id="history-grid">
+            <p class="history-placeholder">Gambar lama akan tersimpan di sini.</p>
+        </div>
+    </div>
+
+</div>
+
+            </div>
+        </main>
+    </div>
+
+<!-- Modal API Key yang sudah di-upgrade dengan Tabs -->
+<div id="api-key-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button id="close-modal-btn" class="modal-close-btn">×</button>
+        <h3>Kelola API Keys</h3>
+        <p>Masukkan API Key Anda. Kunci disimpan dengan aman di browser Anda.</p>
+        
+        <!-- Navigasi Tab di dalam Modal -->
+        <div class="tabs" style="margin-bottom: 1.5rem;">
+            <button class="tab-link active" data-tab="gemini-key">Gemini</button>
+            <button class="tab-link" data-tab="hf-key">Hugging Face</button>
+        </div>
+
+        <!-- Konten Tab untuk API Keys -->
+        <div class="tab-content-wrapper">
+            <!-- Tab 1: Gemini API Key -->
+            <div id="gemini-key" class="tab-content active">
+                <div class="form-group">
+                    <label for="gemini-api-key-input">Google AI (Gemini) API Key</label>
+                    <input type="password" id="gemini-api-key-input" placeholder="Masukkan API Key Gemini...">
+                </div>
+                <button class="modal-action-btn" data-key-type="geminiApiKey">Simpan Kunci Gemini</button>
+            </div>
+            <!-- Tab 2: Hugging Face API Key -->
+            <div id="hf-key" class="tab-content">
+                <div class="form-group">
+                    <label for="hf-api-key-input">Hugging Face API Key</label>
+                    <input type="password" id="hf-api-key-input" placeholder="Masukkan API Key Hugging Face (hf_...).">
+                </div>
+                <button class="modal-action-btn" data-key-type="huggingfaceApiKey">Simpan Kunci Hugging Face</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Path ke JS sudah disesuaikan (naik satu level ke root) -->
+    <script src="../assets/js/ui-loader.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
