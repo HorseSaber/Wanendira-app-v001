@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Wanendira.</title>
+
+    <!-- Impor Font dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Panggilan ke File CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+    <div id="app-overlay" class="app-overlay"></div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="branding-header">
+                <h1 class="brand-name">Wanendira<span class="brand-dot">.</span></h1>
+            </div>
+            <nav id="main-nav" class="navigation"></nav>
+        </aside>
+
+        <!-- Workspace Utama -->
+        <main class="workspace">
+            <header class="workspace-header">
+                <button id="menu-toggle" class="menu-toggle-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+                <h2 class="greeting">Selamat Datang, Kreator!</h2>
+
+                <!-- Wrapper untuk Avatar & Dropdown Menu (POSISI YANG BENAR) -->
+                <div class="profile-wrapper">
+                    <div id="user-profile-toggle" class="user-profile">
+                        <span class="user-name">Guest</span>
+                        <div class="user-avatar">G</div>
+                    </div>
+                    <!-- Dropdown Menu (awalnya tersembunyi) -->
+                    <div id="profile-dropdown" class="profile-dropdown">
+                        <div class="dropdown-item" id="manage-api-key">
+                            <span>🔑</span> Kelola API Key
+                        </div>
+                        <div class="dropdown-item">
+                            <span>⚙️</span> Pengaturan
+                        </div>
+                        <div class="dropdown-separator"></div>
+                        <div class="dropdown-item">
+                            <span>🚪</span> Keluar
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="content-area" class="content-area">
+                <!-- "Pintu Gerbang Visual" -->
+                <div class="tool-grid-container">
+                    <h2 class="grid-title">Pilih Alat untuk Memulai</h2>
+                    <div class="tool-grid">
+                        <!-- Kartu 1: Generator YouTube -->
+                        <a href="pages/generator-youtube.html" class="tool-card">
+                            <div class="tool-card-icon">
+                                <img src="assets/icons/icon-youtube.svg" alt="YouTube Icon">
+                            </div>
+                            <h3 class="tool-card-title">Generator Konten YouTube</h3>
+                            <p class="tool-card-description">Buat skrip untuk Shorts dan video panjang dengan mudah.</p>
+                        </a>
+                
+                        <!-- Kartu 2: Generator Gambar -->
+                        <a href="#" class="tool-card"> <!-- Link # karena belum dibuat -->
+                            <div class="tool-card-icon">
+                                <img src="assets/icons/icon-image.svg" alt="Image Icon">
+                            </div>
+                            <h3 class="tool-card-title">Generator Teks ke Gambar</h3>
+                            <p class="tool-card-description">Ubah imajinasimu menjadi gambar visual yang memukau.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ======================================= -->
+    <!--   MODAL UNTUK PENGATURAN API KEY        -->
+    <!-- ======================================= -->
+    <div id="api-key-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">×</button>
+            <h3>Kelola API Key Gemini</h3>
+            <p>Masukkan API Key Anda untuk menggunakan semua fitur generator. Kunci Anda disimpan dengan aman di browser Anda.</p>
+            
+            <div class="form-group">
+                <label for="api-key-input">Google AI API Key</label>
+                <input type="password" id="api-key-input" placeholder="Masukkan API Key Anda di sini...">
+            </div>
+    
+            <button id="save-api-key-btn" class="modal-action-btn">Simpan Kunci</button>
+        </div>
+    </div>
+
+
+    <!-- Panggilan ke File JavaScript -->
+    <script src="assets/js/ui-loader.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
