@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makna Kata | Wanendira.</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/app.css"><!-- 
+    ====================================================
+    ===      INI SCRIPT BARU YANG DITAMBAHKAN        ===
+    ====================================================
+    -->
+
+</head>
+<body>
+    <div id="app-overlay" class="app-overlay"></div>
+    <div class="app-container">
+        <aside id="sidebar" class="sidebar">
+            <div class="branding-header"><h1 class="brand-name">Wanendira<span class="brand-dot">.</span></h1></div>
+            <nav id="main-nav" class="navigation"></nav>
+        </aside>
+        <main class="workspace">
+            <header class="workspace-header">
+                <button id="menu-toggle" class="menu-toggle-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+                <div class="page-title-wrapper"><h2 class="page-title">MAKNA KATA</h2><p class="page-subtitle">Ubah kutipan sederhana menjadi narasi storytelling yang mendalam.</p></div>
+                <div class="profile-wrapper">
+                    <div id="user-profile-toggle" class="user-profile"><span class="user-name">Guest</span><div class="user-avatar">G</div></div>
+                    <div id="profile-dropdown" class="profile-dropdown"><div class="dropdown-item" id="manage-api-key"><span>🔑</span> Kelola API Key</div><div class="dropdown-item"><span>⚙️</span> Pengaturan</div><div class="dropdown-separator"></div><div class="dropdown-item"><span>🚪</span> Keluar</div></div>
+                </div>
+            </header>
+            <div id="content-area" class="generator-workspace">
+                <div class="generator-controls">
+                    <div class="control-block"><label for="kutipan-input" class="control-label">Masukkan Kutipan atau Ide</label><textarea id="kutipan-input" class="control-textarea" rows="5" placeholder="Contoh: 'Kegagalan adalah guru terbaik.'"></textarea></div>
+                    <div class="control-block"><label for="gaya-bahasa-select" class="control-label">Gaya Bahasa Narasi</label><select id="gaya-bahasa-select" class="control-select"><option value="mentor-maskulin">Mentor Maskulin (Bro-Talk)</option><option value="inspiratif-puitis">Inspiratif & Puitis</option><option value="enerjik-antusias">Enerjik & Antusias</option><option value="tenang-reflektif">Tenang & Reflektif</option><option value="narator-dokumenter">Narator Dokumenter</option></select></div>
+                    <div class="control-block"><label for="gaya-visual-select" class="control-label">Gaya Visual Prompt</label><select id="gaya-visual-select" class="control-select"><option value="cinematic-realistic">Cinematic Realistic</option><option value="fotografi-dramatis">Fotografi Dramatis</option><option value="gaya-pixar">Animasi Gaya Pixar</option><option value="gaya-ghibli">Anime Gaya Ghibli</option><option value="cyberpunk">Anime Cyberpunk</option><option value="lukisan-cat-minyak">Lukisan Cat Minyak</option><option value="watercolor">Watercolor (Cat Air)</option><option value="fantasi-epik">Fantasi Epik</option><option value="sci-fi-futuristik">Sci-Fi Futuristik</option></select></div>
+                    <button class="generate-btn"><span>✨</span> Generate</button>
+                </div>
+                <div class="generator-output">
+                    <div id="output-placeholder" class="output-placeholder"><p>Hasil generatemu akan muncul di sini...</p></div>
+                    <div id="output-wrapper" class="output-wrapper" style="display: none;">
+                        <div class="output-actions"><button class="action-btn" id="copy-btn">Salin Semua</button><button class="action-btn" id="download-btn">Download (.txt)</button></div>
+                        <div class="output-section"><h4 class="output-label">Judul (Optimasi SEO)</h4><div class="output-content" id="output-judul" contenteditable="true"></div></div>
+                        <div class="output-section"><h4 class="output-label">Deskripsi (Optimasi SEO)</h4><div class="output-content" id="output-deskripsi" contenteditable="true"></div></div>
+                        <div class="output-grid">
+                            <div class="output-section"><h4 class="output-label">Hashtag</h4><div class="output-content" id="output-hashtag" contenteditable="true"></div></div>
+                            <div class="output-section"><h4 class="output-label">Tags</h4><div class="output-content" id="output-tags" contenteditable="true"></div></div>
+                        </div>
+                        <div class="output-section"><h4 class="output-label">Ide Kalimat Thumbnail</h4><div class="output-content" id="output-thumbnail" contenteditable="true"></div></div>
+                        <div class="output-section">
+                            <h4 class="output-label">Narasi & Visual Prompt</h4>
+                            <div id="output-narasi"><!-- Narasi per segmen akan dimasukkan di sini oleh JavaScript --></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="api-key-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">×</button>
+            <h3>Kelola API Key Gemini</h3>
+            <p>Masukkan API Key Anda untuk menggunakan semua fitur generator. Kunci Anda disimpan dengan aman di browser Anda.</p>
+            <div class="form-group"><label for="api-key-input">Google AI API Key</label><input type="password" id="api-key-input" placeholder="Masukkan API Key Anda di sini..."></div>
+            <button id="save-api-key-btn" class="modal-action-btn">Simpan Kunci</button>
+        </div>
+    </div>
+    <script src="../../assets/js/ui-loader.js"></script>
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>
