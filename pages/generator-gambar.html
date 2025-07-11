@@ -40,37 +40,88 @@
             <div id="content-area" class="generator-workspace">
                 
            <!-- Area Kontrol (Kiri) - Sudah Terisi -->
+<!-- Area Kontrol (Kiri) - VERSI ASISTEN PROMPT -->
 <div class="generator-controls" id="image-generator-controls">
 
-    <!-- Blok 1: Prompt Utama -->
+    <!-- Blok 1: Prompt Builder Terstruktur -->
     <div class="control-block">
-        <label for="prompt-input" class="control-label">Prompt Utama</label>
-        <textarea id="prompt-input" class="control-textarea" rows="5" placeholder="Deskripsikan gambar yang kamu inginkan. Gunakan bahasa Inggris untuk hasil terbaik. Contoh: a majestic lion king on a cliff, cinematic, golden hour"></textarea>
+        <label class="control-label">Asisten Prompt (Prompt Builder)</label>
+        
+        <!-- Setiap dropdown akan ada di dalam form-group-nya sendiri -->
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="profesi-select" class="sub-control-label">Profesi/Karakter:</label>
+            <select id="profesi-select" class="control-select prompt-part">
+                <option value="">Pilih profesi/karakter...</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="item-select" class="sub-control-label">Item Unik:</label>
+            <select id="item-select" class="control-select prompt-part">
+                <option value="">Pilih item unik...</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="outfit-select" class="sub-control-label">Outfit Khas:</label>
+            <select id="outfit-select" class="control-select prompt-part">
+                <option value="">Pilih outfit khas...</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="ekspresi-select" class="sub-control-label">Ekspresi Wajah:</label>
+            <select id="ekspresi-select" class="control-select prompt-part">
+                <option value="">Pilih ekspresi wajah...</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="aksi-select" class="sub-control-label">Aksi:</label>
+            <select id="aksi-select" class="control-select prompt-part">
+                <option value="">Pilih aksi...</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="lokasi-select" class="sub-control-label">Lokasi/Latar Belakang:</label>
+            <select id="lokasi-select" class="control-select prompt-part">
+                <option value="">Pilih lokasi/latar belakang...</option>
+            </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="gaya-visual-select" class="sub-control-label">Gaya Visual:</label>
+            <select id="gaya-visual-select" class="control-select prompt-part">
+                <option value="">Pilih gaya visual...</option>
+            </select>
+        </div>
     </div>
 
-    <!-- Blok 2: Negative Prompt -->
+    <!-- Blok 2: Prompt Utama (Sekarang menjadi hasil dari Prompt Builder) -->
+    <div class="control-block">
+        <label for="prompt-input" class="control-label">Hasil Prompt</label>
+        <textarea id="prompt-input" class="control-textarea" rows="5" placeholder="Prompt akan terbentuk di sini berdasarkan pilihanmu... Kamu juga bisa menambahkan detail di sini."></textarea>
+    </div>
+
+    <!-- Blok 3: Negative Prompt dengan Saran -->
     <div class="control-block">
         <label for="negative-prompt-input" class="control-label">Negative Prompt</label>
-        <textarea id="negative-prompt-input" class="control-textarea" rows="3" placeholder="Hal-hal yang TIDAK kamu inginkan di gambar. Contoh: ugly, blurry, bad anatomy, watermark, text"></textarea>
+        <textarea id="negative-prompt-input" class="control-textarea" rows="3" placeholder="Isi dengan hal yang tidak diinginkan..."></textarea>
+        <div class="suggestion-pills">
+            <button class="pill-btn" data-value="ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face">Kualitas Buruk</button>
+            <button class="pill-btn" data-value="text, watermark, signature">Teks & Tanda</button>
+            <button class="pill-btn" data-value="blurry, blurred, grainy">Buram</button>
+        </div>
     </div>
-
-    <!-- Blok 3: Pengaturan Gambar -->
+    
+    <!-- Blok 4: Pengaturan Gambar (tidak berubah) -->
     <div class="control-block">
         <label class="control-label">Pengaturan Gambar</label>
-        
-        <!-- Sub-blok untuk Rasio Aspek -->
         <div class="form-group" style="margin-bottom: 1rem;">
-            <label for="aspect-ratio-select" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; display: block;">Rasio Aspek</label>
+            <label for="aspect-ratio-select" class="sub-control-label">Rasio Aspek</label>
             <select id="aspect-ratio-select" class="control-select">
                 <option value="1:1" selected>1:1 (Persegi)</option>
                 <option value="16:9">16:9 (Landscape)</option>
                 <option value="9:16">9:16 (Potrait)</option>
             </select>
         </div>
-
-        <!-- Sub-blok untuk Jumlah Gambar -->
         <div class="form-group">
-            <label for="num-images-select" style="font-size: 0.8rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.5rem; display: block;">Jumlah Gambar</label>
+            <label for="num-images-select" class="sub-control-label">Jumlah Gambar</label>
             <select id="num-images-select" class="control-select">
                 <option value="1">1 Gambar</option>
                 <option value="2">2 Gambar</option>
@@ -79,7 +130,7 @@
         </div>
     </div>
 
-    <!-- Tombol Generate Utama -->
+    <!-- Tombol Generate Utama (tidak berubah) -->
     <button class="generate-btn" id="generate-image-btn">
         <span>🎨</span> Generate Gambar
     </button>
