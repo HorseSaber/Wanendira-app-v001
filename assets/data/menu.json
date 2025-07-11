@@ -19,28 +19,10 @@
       "link": "pages/generator-gambar.html"
     },
     {
-      "id": "prompt-generator",
-      "name": "Generator Prompt Visual",
-      "icon": "icon-prompt.svg",
-      "link": "pages/generator-prompt.html"
-    },
-    {
-      "id": "video-prompt-generator",
-      "name": "Generator Aksi Video",
+      "id": "director-ai",
+      "name": "Sutradara AI (Video)",
       "icon": "icon-video.svg",
-      "link": "pages/generator-video.html"
-    },
-    {
-      "id": "explore",
-      "name": "Ruang Eksplorasi",
-      "icon": "icon-explore.svg",
-      "link": "pages/explore.html"
-    },
-    {
-      "id": "blog",
-      "name": "Blog",
-      "icon": "icon-blog.svg",
-      "link": "pages/blog.html"
+      "link": "pages/sutradara-ai.html"
     }
   ]
 }

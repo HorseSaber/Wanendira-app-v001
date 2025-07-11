@@ -1,0 +1,32 @@
+{
+  "shotTypes": [
+    { "display": "Extreme Close Up", "value": "extreme close up shot" },
+    { "display": "Close Up", "value": "close up shot" },
+    { "display": "Medium Shot", "value": "medium shot" },
+    { "display": "Full Shot (Long Shot)", "value": "full shot, long shot" },
+    { "display": "Wide Shot (Establishing Shot)", "value": "wide shot, establishing shot" }
+  ],
+  "cameraAngles": [
+    { "display": "Eye Level", "value": "eye-level angle" },
+    { "display": "Low Angle (Sudut Rendah)", "value": "low angle" },
+    { "display": "High Angle (Sudut Tinggi)", "value": "high angle" },
+    { "display": "Dutch Angle (Miring)", "value": "dutch angle, canted angle" },
+    { "display": "Bird's Eye View", "value": "bird's eye view shot" }
+  ],
+  "cameraMovements": [
+    { "display": "Static (Diam)", "value": "static shot" },
+    { "display": "Pan (Menoleh Kanan/Kiri)", "value": "panning shot" },
+    { "display": "Tilt (Mendongak Atas/Bawah)", "value": "tilting shot" },
+    { "display": "Dolly In/Out (Maju/Mundur)", "value": "dolly shot" },
+    { "display": "Tracking (Mengikuti Objek)", "value": "tracking shot, following shot" },
+    { "display": "Crane/Jib Shot (Naik/Turun)", "value": "crane shot" }
+  ],
+  "lightingStyles": [
+    { "display": "Pencahayaan Sinematik", "value": "cinematic lighting" },
+    { "display": "Cahaya Natural (Siang Hari)", "value": "natural lighting, daylight" },
+    { "display": "Lampu Neon (Gaya Cyberpunk)", "value": "neon lighting, cyberpunk" },
+    { "display": "Kontras Tinggi (Film Noir)", "value": "high-contrast lighting, chiaroscuro, film noir style" },
+    { "display": "Cahaya Remang (Moody)", "value": "dim lighting, moody atmosphere" },
+    { "display": "Golden Hour (Matahari Terbenam)", "value": "golden hour lighting" }
+  ]
+}

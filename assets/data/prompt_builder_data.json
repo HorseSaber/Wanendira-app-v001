@@ -1,0 +1,56 @@
+{
+  "profesi": [
+    { "display": "Astronot", "value": "astronaut" },
+    { "display": "Penyihir", "value": "wizard, sorcerer" },
+    { "display": "Kesatria", "value": "knight" },
+    { "display": "Ninja / Shinobi", "value": "ninja, shinobi" },
+    { "display": "Detektif Noir", "value": "noir detective" },
+    { "display": "Cyborg", "value": "cyborg" }
+  ],
+  "itemUnik": [
+    { "display": "Pedang Menyala", "value": "holding a glowing sword" },
+    { "display": "Buku Mantra Kuno", "value": "holding an ancient spellbook" },
+    { "display": "Pistol Laser", "value": "holding a laser pistol" },
+    { "display": "Lentera Ajaib", "value": "holding a magic lantern" },
+    { "display": "Peta Harta Karun", "value": "looking at a treasure map" }
+  ],
+  "outfitKhas": [
+    { "display": "Jubah Berkerudung Gelap", "value": "wearing a dark hooded cloak" },
+    { "display": "Armor Baja Mengkilap", "value": "wearing shiny steel armor" },
+    { "display": "Trench Coat Klasik", "value": "wearing a classic trench coat" },
+    { "display": "Kimono Tradisional", "value": "wearing a traditional kimono" },
+    { "display": "Pakaian Luar Angkasa", "value": "wearing a spacesuit" }
+  ],
+  "ekspresiWajah": [
+    { "display": "Tersenyum Misterius", "value": "mysterious smile" },
+    { "display": "Ekspresi Marah", "value": "angry, furious expression" },
+    { "display": "Wajah Tenang & Bijak", "value": "calm and wise expression" },
+    { "display": "Fokus & Intens", "value": "focused and intense look" },
+    { "display": "Tertawa Lepas", "value": "laughing happily" }
+  ],
+  "aksi": [
+    { "display": "Duduk di Singgasana", "value": "sitting on a throne" },
+    { "display": "Berlari di Tengah Hujan", "value": "running in the rain" },
+    { "display": "Melihat ke Kejauhan", "value": "looking into the distance" },
+    { "display": "Membaca Buku", "value": "reading a book" },
+    { "display": "Melompat di Antara Gedung", "value": "leaping between buildings" }
+  ],
+  "lokasi": [
+    { "display": "Hutan Ajaib di Malam Hari", "value": "in an enchanted forest at night" },
+    { "display": "Kota Cyberpunk Penuh Neon", "value": "in a neon-lit cyberpunk city" },
+    { "display": "Reruntuhan Kuil Kuno", "value": "in ancient temple ruins" },
+    { "display": "Di Atas Gedung Pencakar Langit", "value": "on top of a skyscraper" },
+    { "display": "Perpustakaan Tua", "value": "in an old library" },
+    { "display": "Planet Mars", "value": "on the planet mars" }
+  ],
+  "gayaVisual": [
+    { "display": "Fotografi Realistis (Hyperrealistic)", "value": "photorealistic, hyperrealistic, 8k, ultra detailed, cinematic shot" },
+    { "display": "Gaya Anime (Studio Ghibli)", "value": "studio ghibli style, anime, beautiful, detailed" },
+    { "display": "Gaya Anime (Makoto Shinkai)", "value": "makoto shinkai style, anime, cinematic, beautiful lighting" },
+    { "display": "Seni Konsep Digital (Artstation)", "value": "digital painting, concept art, trending on artstation, sharp focus" },
+    { "display": "Lukisan Cat Minyak", "value": "oil painting, masterpiece, classic art" },
+    { "display": "Model 3D (Gaya Pixar)", "value": "pixar style 3d model, disney style, highly detailed" },
+    { "display": "Cyberpunk / Synthwave", "value": "cyberpunk, synthwave, neon, futuristic" },
+    { "display": "Fantasi Epik", "value": "epic fantasy, cinematic, lord of the rings style" }
+  ]
+}
