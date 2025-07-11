@@ -794,28 +794,42 @@ select.control-select {
     }
 }
 /* ==================================================== */
-/* ---      STYLE UNTUK GENERATOR GAMBAR            --- */
+/* ---      STYLE UNTUK GENERATOR GAMBAR (REVISI)   --- */
 /* ==================================================== */
 
 .image-result-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    /* Menggunakan teknik Masonry Layout dengan Column CSS */
+    column-count: 2; /* Default untuk layar medium, 2 kolom */
+    column-gap: 1rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 2rem;
-    min-height: 250px; /* Agar tidak 'collapse' saat kosong */
+    min-height: 250px; 
 }
 
-/* Placeholder di dalam result grid */
-#output-placeholder-image {
-    grid-column: 1 / -1; /* Membuat placeholder mengambil seluruh lebar grid */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: var(--text-secondary);
-    min-height: 250px;
+/* Untuk layar lebih kecil, hanya 1 kolom */
+@media (max-width: 768px) {
+    .image-result-grid {
+        column-count: 1;
+    }
+}
+
+/* Untuk layar lebih besar, bisa 3 kolom */
+@media (min-width: 1200px) {
+    .image-result-grid {
+        column-count: 3;
+    }
+}
+
+/* Setiap kartu gambar sekarang akan mengisi kolom secara vertikal */
+.image-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: var(--primary-bg);
+    /* Penting: hindari kartu terpotong antar kolom */
+    break-inside: avoid; 
+    margin-bottom: 1rem; /* Jarak antar gambar di satu kolom */
 }
 
 /* Wrapper untuk setiap gambar hasil */
@@ -927,4 +941,251 @@ select.control-select {
     stroke: white; /* Warna ikon */
     width: 18px;   /* Ukuran ikon */
     height: 18px;
+}
+/* Style tambahan untuk Prompt Builder */
+.sub-control-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.suggestion-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.pill-btn {
+    background-color: var(--border-color);
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px; /* Membuatnya berbentuk pil */
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.pill-btn:hover {
+    background-color: var(--primary-bg);
+    color: var(--text-bright);
+    border-color: var(--border-color);
+}
+/* Style tambahan untuk Workspace Sutradara AI */
+.director-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Jarak antar blok utama (Character Sheet, Sinopsis, dll) */
+}
+
+/* ---      STYLE UNTUK SUTRADARA AI                --- */
+/* ==================================================== */
+
+/* Blok untuk setiap langkah (Character Sheet, Sinopsis, dll) */
+.director-step-block {
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden; /* Agar border-radius bekerja dengan baik */
+}
+
+.step-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+/* Penjaga untuk Tampilan Mobile (Ini yang memperbaiki layout) */
+@media (max-width: 768px) {
+    .step-header {
+        flex-direction: column; /* Ubah arah flex menjadi vertikal */
+        gap: 1rem; /* Kurangi jarak antar elemen */
+        align-items: center; /* Pusatkan semua item di tengah */
+        text-align: center; /* Pusatkan teks */
+        padding: 1.5rem 1rem; /* Sesuaikan padding untuk mobile */
+    }
+
+    .step-title {
+        font-size: 1.3rem; /* Sedikit kecilkan judul di mobile */
+    }
+}
+
+.step-number {
+    background-color: var(--accent-gold-bright);
+    color: var(--primary-bg);
+    font-weight: 700;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    flex-shrink: 0; /* Agar tidak mengecil */
+}
+
+.step-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin: 0;
+}
+
+.step-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.step-content {
+    padding: 2rem;
+}
+
+/* Grid untuk input di dalam character sheet */
+.character-sheet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.character-sheet-grid .full-width {
+    grid-column: 1 / -1; /* Membuat elemen mengambil lebar penuh */
+}
+
+/* Input standar di dalam blok sutradara */
+.control-input {
+    width: 100%;
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-bright);
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.control-input:focus {
+    outline: none;
+    border-color: var(--accent-gold-darker);
+    box-shadow: 0 0 0 3px rgba(209, 175, 55, 0.2);
+}
+
+/* Hasil "Character Lock" */
+.character-lock-result .locked-prompt {
+    background-color: var(--primary-bg);
+    border: 1px dashed var(--accent-gold-darker);
+    color: var(--accent-gold-bright);
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    min-height: 50px;
+    line-height: 1.6;
+}
+.locked-prompt .placeholder-text {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+/* Style tambahan untuk Sinopsis & Storyboard */
+
+.scene-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Jarak antar kartu adegan */
+    margin-bottom: 1.5rem;
+    min-height: 50px;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 2px dashed var(--border-color);
+    color: var(--text-secondary);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-speed) ease;
+}
+
+.add-btn:hover {
+    background-color: var(--border-color);
+    color: var(--text-bright);
+}
+
+.add-btn svg {
+    stroke: currentColor; /* Ikon akan mengikuti warna teks */
+}
+
+/* Style untuk setiap kartu adegan (akan kita gunakan nanti) */
+.scene-card {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.scene-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scene-card-title {
+    font-weight: 600;
+    color: var(--text-bright);
+}
+
+.delete-scene-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+}
+.delete-scene-btn:hover {
+    color: #ff6b6b; /* Merah untuk aksi hapus */
+}
+/* Style tambahan untuk Hasil Akhir Storyboard */
+.final-output-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.prompt-result-card {
+    background-color: var(--primary-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.prompt-result-card .scene-card-title {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.prompt-result-card pre {
+    background-color: rgba(0,0,0,0.2);
+    padding: 1rem;
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    white-space: pre-wrap; /* Agar teks panjang bisa wrap */
+    word-wrap: break-word; /* Agar teks panjang tidak keluar dari kotak */
+    line-height: 1.6;
 }
