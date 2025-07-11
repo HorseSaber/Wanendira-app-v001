@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sutradara AI | Wanendira.</title>
+    
+    <!-- Path ke CSS sudah disesuaikan -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+</head>
+<body>
+    <div id="app-overlay" class="app-overlay"></div>
+    <div class="app-container">
+        <!-- Sidebar akan di-load oleh ui-loader.js -->
+        <aside id="sidebar" class="sidebar">
+            <div class="branding-header"><h1 class="brand-name">Wanendira<span class="brand-dot">.</span></h1></div>
+            <nav id="main-nav" class="navigation"></nav>
+        </aside>
+
+        <!-- Workspace Utama -->
+        <main class="workspace">
+            <!-- Header yang konsisten -->
+            <header class="workspace-header">
+                <button id="menu-toggle" class="menu-toggle-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+                <div class="page-title-wrapper">
+                    <h2 class="page-title">SUTRADARA AI</h2>
+                    <p class="page-subtitle">Rancang storyboard dan prompt video sinematik untuk Veo & model AI lainnya.</p>
+                </div>
+                <div class="profile-wrapper">
+                    <div id="user-profile-toggle" class="user-profile"><span class="user-name">Guest</span><div class="user-avatar">G</div></div>
+                    <div id="profile-dropdown" class="profile-dropdown">
+                        <div class="dropdown-item" id="manage-api-key"><span>🔑</span> Kelola API Key</div>
+                        <div class="dropdown-item"><span>⚙️</span> Pengaturan</div>
+                        <div class="dropdown-separator"></div>
+                        <div class="dropdown-item"><span>🚪</span> Keluar</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Area konten utama untuk Sutradara AI -->
+            <div id="content-area" class="director-workspace">
+                
+                <!-- ============================================= -->
+                <!-- LANGKAH 1: CHARACTER SHEET                    -->
+                <!-- ============================================= -->
+                <div class="director-step-block">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <div> <!-- Wrapper tambahan untuk perbaikan mobile -->
+                            <h3 class="step-title">Definisikan Karakter Utama</h3>
+                            <p class="step-description">Buat "Kunci Karakter" yang konsisten. Semakin detail, semakin baik.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-content">
+                        <!-- Grid untuk input karakter -->
+                        <div class="character-sheet-grid">
+                            
+                            <!-- Input Nama & Gender -->
+                            <div class="form-group">
+                                <label for="char-name" class="sub-control-label">Nama Karakter</label>
+                                <input type="text" id="char-name" class="control-input" placeholder="Contoh: John, Kenji, Anya">
+                            </div>
+                            <div class="form-group">
+                                <label for="char-gender" class="sub-control-label">Gender</label>
+                                <select id="char-gender" class="control-select">
+                                    <option value="male">Pria (Male)</option>
+                                    <option value="female">Wanita (Female)</option>
+                                </select>
+                            </div>
+
+                            <!-- Input Deskripsi Fisik -->
+                            <div class="form-group full-width">
+                                <label for="char-appearance" class="sub-control-label">Penampilan & Ciri Fisik</label>
+                                <textarea id="char-appearance" class="control-textarea" rows="3" placeholder="Contoh: 40-an tahun, rambut coklat pendek, mata biru tajam, ada bekas luka di pipi kiri..."></textarea>
+                            </div>
+
+                            <!-- Input Pakaian Khas -->
+                            <div class="form-group full-width">
+                                <label for="char-outfit" class="sub-control-label">Pakaian Khas (Signature Outfit)</label>
+                                <textarea id="char-outfit" class="control-textarea" rows="2" placeholder="Contoh: trench coat coklat klasik di atas kemeja putih dan dasi longgar..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Hasil "Character Lock" -->
+                        <div class="character-lock-result">
+                            <label class="sub-control-label">Hasil Kunci Karakter (Character Lock):</label>
+                            <div class="locked-prompt" id="character-lock-output">
+                                <p class="placeholder-text">Kunci Karakter akan terbentuk di sini...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================= -->
+                <!-- LANGKAH 2: SINOPSIS CERITA                      -->
+                <!-- ============================================= -->
+                <div class="director-step-block">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <div> <!-- Wrapper tambahan -->
+                            <h3 class="step-title">Tulis Sinopsis Cerita</h3>
+                            <p class="step-description">Tuliskan ide atau alur cerita singkatmu di sini.</p>
+                        </div>
+                    </div>
+                    <div class="step-content">
+                        <div class="form-group">
+                            <textarea id="sinopsis-input" class="control-textarea" rows="4" placeholder="Contoh: Seorang detektif menemukan petunjuk di TKP, membawanya ke sebuah gudang tua di mana ia berhadapan dengan sang penjahat."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================= -->
+                <!-- LANGKAH 3: STORYBOARD ADEGAN                  -->
+                <!-- ============================================= -->
+                <div class="director-step-block">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <div> <!-- Wrapper tambahan -->
+                            <h3 class="step-title">Buat Storyboard Adegan</h3>
+                            <p class="step-description">Pecah sinopsismu menjadi adegan-adegan kunci. Setiap adegan akan menjadi satu klip video.</p>
+                        </div>
+                    </div>
+                        <!-- ============================================= -->
+    <!-- LANGKAH 4: HASIL AKHIR (PROMPT STORYBOARD)    -->
+    <!-- ============================================= -->
+    <div class="director-step-block">
+        <div class="step-header">
+            <span class="step-number">4</span>
+            <div> <!-- Wrapper tambahan -->
+                <h3 class="step-title">Hasil Akhir (Storyboard Prompts)</h3>
+                <p class="step-description">Tekan tombol di bawah untuk menggabungkan semua adegan menjadi prompt yang siap digunakan.</p>
+            </div>
+        </div>
+        <div class="step-content">
+            <!-- Tombol Generate Utama untuk Sutradara AI -->
+            <button class="generate-btn" id="generate-storyboard-btn" style="width: 100%; margin-bottom: 2rem;">
+                <span>🎬</span> Generate Storyboard Prompts
+            </button>
+
+            <!-- Wadah untuk menampilkan hasil akhir -->
+            <div id="final-output-container" class="final-output-container">
+                <p class="placeholder-text">Prompt akhir untuk setiap adegan akan muncul di sini...</p>
+            </div>
+        </div>
+    </div>
+                    <div class="step-content">
+                        <!-- Wadah untuk daftar adegan yang akan dibuat oleh JS -->
+                        <div id="scene-list" class="scene-list-container">
+                            <p class="placeholder-text">Belum ada adegan. Klik tombol di bawah untuk memulai.</p>
+                        </div>
+                        
+                        <!-- Tombol untuk menambah adegan baru -->
+                        <button class="add-btn" id="add-scene-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            <span>Tambah Adegan</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal API Key tetap disertakan untuk konsistensi -->
+    <div id="api-key-modal" class="modal-overlay">
+        <!-- Struktur modal yang sudah di-upgrade -->
+        <div class="modal-content">
+            <button id="close-modal-btn" class="modal-close-btn">×</button>
+            <h3>Kelola API Keys</h3>
+            <p>Masukkan API Key Anda. Kunci disimpan dengan aman di browser Anda.</p>
+            <div class="tabs" style="margin-bottom: 1.5rem;">
+                <button class="tab-link active" data-tab="gemini-key">Gemini</button>
+                <button class="tab-link" data-tab="hf-key">Hugging Face</button>
+            </div>
+            <div class="tab-content-wrapper">
+                <div id="gemini-key" class="tab-content active">
+                    <div class="form-group">
+                        <label for="gemini-api-key-input">Google AI (Gemini) API Key</label>
+                        <input type="password" id="gemini-api-key-input" placeholder="Masukkan API Key Gemini...">
+                    </div>
+                    <button class="modal-action-btn" data-key-type="geminiApiKey">Simpan Kunci Gemini</button>
+                </div>
+                <div id="hf-key" class="tab-content">
+                    <div class="form-group">
+                        <label for="hf-api-key-input">Hugging Face API Key</label>
+                        <input type="password" id="hf-api-key-input" placeholder="Masukkan API Key Hugging Face (hf_...).">
+                    </div>
+                    <button class="modal-action-btn" data-key-type="huggingfaceApiKey">Simpan Kunci Hugging Face</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panggilan ke JS -->
+    <script src="../assets/js/ui-loader.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
